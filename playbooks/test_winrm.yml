@@ -1,17 +1,17 @@
 
 ---
-- name: Test WinRM Port from AAP
+- name: Test TCP connectivity from AAP
   hosts: localhost
   gather_facts: false
 
   tasks:
-    - name: Test TCP 5986
+    - name: Test WinRM port 5986
       ansible.builtin.wait_for:
         host: 138.95.222.146
         port: 5986
         timeout: 10
         state: started
 
-    - name: Port test successful
+    - name: Connectivity successful
       ansible.builtin.debug:
-        msg: "TCP 5986 is reachable from the AAP Execution Environment"
+        msg: "SUCCESS - AAP can reach Windows server on TCP 5986"
